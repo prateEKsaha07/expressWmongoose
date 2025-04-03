@@ -16,9 +16,13 @@
 
     <label for="category">Category:</label>
     <select id="category" name="category">
-        <option value="fruit">fruit</option>
-        <option value="veggies">Veggies</option>
-        <option value="dairy">Dairy</option>
+        
+        <option value="fruit"<%= product.category === 'fruit' ? 'selected' : '' %>>fruit</option>
+
+        <option value="veggies"<%= product.category === 'veggies' ? 'selected' : '' %>>Veggies</option>
+        
+        <option value="dairy"<%= product.category === 'dairy' ? 'selected' : '' %>>Dairy</option>
+        
     </select>
     <button type="submit">Create Product</button>
 </form>

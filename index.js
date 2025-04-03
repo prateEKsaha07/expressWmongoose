@@ -20,9 +20,9 @@ app.use(methodOverride('_method')) // Enables PUT and DELETE requests
 //     req.send('dog is here');
 // })
 
-// app.get('/',(res,req) => {
-//     req.send('this is home page !');
-// })
+app.get('/',(res,req) => {
+    req.send('this is home page !');
+})
 
 
 // app.get('/products', async (req,res) => {
@@ -86,6 +86,14 @@ app.put('/products/:id', async (req,res)=>{
     const {id} = req.params; //getting the id
     const product = await Product.findByIdAndUpdate(id,req.body,{runValidators:true , new:true})
     res.redirect(`/products/${product._id}`)
+})
+
+//delete route
+app.delete('/products/:id', async (req, res) => {
+    const {id} = req.params;
+    const deletedProduct = await Product.findByIdAndDelete(id);
+    res.redirect('/products');
+    console.log('item deleted!');
 })
 
 app.listen(3000,() =>{
